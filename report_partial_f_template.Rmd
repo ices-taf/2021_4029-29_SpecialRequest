@@ -1,0 +1,67 @@
+### Proportion against year by fleet per age {.tabset}
+
+```{r, results = "asis"}
+res <- lapply(stocks, function(x) {
+  knitr::knit_child(text = c(
+    '',
+    '#### `r x`',
+    '',
+    '```{r}',
+    'ggplotly_full(plot_list$prop_yfa[[x]])',
+    '```',
+    ''
+  ), envir = environment(), quiet = TRUE)
+})
+cat(unlist(res), sep = '\n')
+```
+
+### Partial F against year by fleet per age {.tabset}
+
+```{r, results = "asis"}
+res <- lapply(stocks, function(x) {
+  knitr::knit_child(text = c(
+    '',
+    '#### `r x`',
+    '',
+    '```{r}',
+    'ggplotly_full(plot_list$pfatage_yfa[[x]])',
+    '```',
+    ''
+  ), envir = environment(), quiet = TRUE)
+})
+cat(unlist(res), sep = '\n')
+```
+
+### Proportion against age by year per fleet {.tabset}
+
+```{r, results = "asis"}
+res <- lapply(stocks, function(x) {
+  knitr::knit_child(text = c(
+    '',
+    '#### `r x`',
+    '',
+    '```{r}',
+    'ggplotly_full(plot_list$prop_ayf[[x]])',
+    '```',
+    ''
+  ), envir = environment(), quiet = TRUE)
+})
+cat(unlist(res), sep = '\n')
+```
+
+### Partial F against age by year per fleet {.tabset}
+
+```{r, results = "asis"}
+res <- lapply(stocks, function(x) {
+  knitr::knit_child(text = c(
+    '',
+    '#### `r x`',
+    '',
+    '```{r}',
+    'ggplotly_full(plot_list$pfatage_ayf[[x]])',
+    '```',
+    ''
+  ), envir = environment(), quiet = TRUE)
+})
+cat(unlist(res), sep = '\n')
+```

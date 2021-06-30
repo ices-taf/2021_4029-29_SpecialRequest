@@ -1,0 +1,41 @@
+---
+  output:
+    html_document:
+      mathjax: null
+---
+<style>
+.main-container {
+    max-width: 90%
+}
+</style>
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(
+  echo = FALSE
+)
+
+ggplotly_full <- function(p) {
+  ggplotly(p, width = 1600, height = 800)
+}
+```
+
+# F-at-age Quality Control Plots {.tabset}
+
+## F-at-age over age by year for each stock
+
+```{r}
+ggplotly_full(fatage_ays)
+```
+
+## F-at-age over years by age for each stock
+
+
+```{r}
+ggplotly_full(fatage_yas)
+```
+
+## F-at-age over years by stock for each age
+
+```{r}
+ggplotly_full(fatage_ysa)
+```

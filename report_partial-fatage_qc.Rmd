@@ -1,0 +1,50 @@
+---
+  output:
+    html_document:
+      mathjax: null
+---
+<style>
+.main-container {
+    max-width: 90%
+}
+</style>
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(
+  echo = FALSE,
+  message = FALSE
+)
+
+ggplotly_full <- function(p) {
+  ggplotly(p, width = 1600, height = 700)
+}
+```
+
+# Partial F-at-age Quality Control Plots {.tabset}
+
+## Fishing Category fleets {.tabset}
+
+```{r}
+plot_list <- plot_lists[["fishing_cat"]]
+```
+
+```{r, child=c('report_partial_f_template.Rmd')}
+```
+
+## Metier Level 4 fleets {.tabset}
+
+```{r}
+plot_list <- plot_lists[["Level4"]]
+```
+
+```{r, child=c('report_partial_f_template.Rmd')}
+```
+
+## Metier Level 5 fleets {.tabset}
+
+```{r}
+plot_list <- plot_lists[["Level5"]]
+```
+
+```{r, child=c('report_partial_f_template.Rmd')}
+```
