@@ -10,34 +10,38 @@
 library(icesTAF)
 taf.library(icesSharePoint)
 
-spgetfile(
-  "Documents/Preliminary documents/bootstrap_initial_data/had.27.7a/f-at-age.csv",
-  "/admin/Requests",
-  "https://community.ices.dk",
-  destdir = "."
-)
+warning("Had 7a needs to be extracted from the report")
 
-# read lowestoft file
-fdata <- read.taf("f-at-age.csv")
-years <- fdata$year
-ages <- as.numeric(colnames(fdata)[-1])
-
-data <-
-  data.frame(
-    year = rep(years, length(ages)),
-    age = rep(ages, each = length(years)),
-    harvest = unname(unlist(fdata[, -1]))
+if (FALSE) {
+  spgetfile(
+    "Documents/Preliminary documents/bootstrap_initial_data/had.27.7a/f-at-age.csv",
+    "/admin/Requests",
+    "https://community.ices.dk",
+    destdir = "."
   )
-data$stock_code <- "had.27.7a"
-data$assessment_year <- 2020
-write.taf(data)
 
-cat(
-  "NOTE:
+  # read lowestoft file
+  fdata <- read.taf("f-at-age.csv")
+  years <- fdata$year
+  ages <- as.numeric(colnames(fdata)[-1])
+
+  data <-
+    data.frame(
+      year = rep(years, length(ages)),
+      age = rep(ages, each = length(years)),
+      harvest = unname(unlist(fdata[, -1]))
+    )
+  data$stock_code <- "had.27.7a"
+  data$assessment_year <- 2020
+  write.taf(data)
+
+  cat(
+    "NOTE:
 * F taken from report, nothing on sharepoint
 ",
-  file = "README.md"
-)
+    file = "README.md"
+  )
 
-# clean up
-unlink("f-at-age.csv")
+  # clean up
+  unlink("f-at-age.csv")
+}
