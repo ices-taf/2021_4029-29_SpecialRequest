@@ -19,6 +19,7 @@ get_soa_fs <- function(run) {
 }
 
 # run <- "ple.27.21-23_WGBFAS_2020_v5"
+# run <- "cod6a_WGCSE2020_final"
 get_soa_flstock <- function(run) {
   fit <- fitfromweb(run, character.only = TRUE)
 
@@ -26,14 +27,21 @@ get_soa_flstock <- function(run) {
   ages <- as.numeric(colnames(fdata))
   years <- as.numeric(rownames(fdata))
 
+  catch.n <- stockassessment:::getFleet(fit, 1)
+  if (nrow(catch.n) < length(years)) {
+    extraNA <- rep(NA, length(ages))
+  } else {
+    extraNA <- numeric(0)
+  }
+
   data <-
     data.frame(
       year = rep(years, length(ages)),
       age = rep(ages, each = length(years)),
-      catch.n = c(stockassessment:::getFleet(fit, 1)),
-      catch.wt = c(fit$data$catchMeanWeight),
-      discards.wt = c(fit$data$disMeanWeight),
-      landings.wt = c(fit$data$landMeanWeight),
+      catch.n = c(c(catch.n), extraNA),
+      catch.wt = c(c(fit$data$catchMeanWeight), extraNA),
+      discards.wt = c(c(fit$data$disMeanWeight), extraNA),
+      landings.wt = c(c(fit$data$landMeanWeight), extraNA),
       stock.n = c(ntable(fit)),
       stock.wt = c(fit$data$stockMeanWeight),
       m = c(fit$data$natMor),
