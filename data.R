@@ -3,4 +3,6 @@
 ## Before:
 ## After:
 
-source("data_f-at-age.R")
+mkdir("data")
+
+source("data_stocks.R")
