@@ -1,0 +1,23 @@
+Region,Species,Stock,Age-Structered,FLFleet availability identified from WGMIXFISH,Can we get it
+NORTH SEA,Cod,cod.27.47d20,YES,North Sea Mixed Fisheries Annex 2020,Y
+NORTH SEA,Haddock,had.27.46a20,YES,North Sea Mixed Fisheries Annex 2020,Y
+NORTH SEA,Whiting,whg.27.47d,YES,North Sea Mixed Fisheries Annex 2020,Y
+NORTH SEA,Plaice,ple.27.420,YES,North Sea Mixed Fisheries Annex 2020,Y
+NORTH SEA,Plaice,ple.27.7d,YES,North Sea Mixed Fisheries Annex 2020,Y
+NORTH SEA,Plaice,ple.27.7d,YES,,TAF
+NORTH SEA,Saithe,pok.27.3a46,YES,North Sea Mixed Fisheries Annex 2020,Y
+NORTH WESTERN WATERS,Cod,cod.27.6a,YES,,SOA
+NORTH WESTERN WATERS,Cod,cod.27.7e-k,YES,Celtic Sea Mixed Fisheries Annex 2020,Y
+NORTH WESTERN WATERS,Haddock,had.27.6b,YES,,sharepoint
+NORTH WESTERN WATERS,Haddock,had.27.7a,YES,,report only
+NORTH WESTERN WATERS,Haddock,had.27.7b-k,YES,Celtic Sea Mixed Fisheries Annex 2020,Y
+NORTH WESTERN WATERS,Whiting,whg.27.7b-ce-k,YES,Celtic Sea Mixed Fisheries Annex 2020,Y
+NORTH WESTERN WATERS,Plaice,ple.27.7a,YES,,Sharepoint - SAM
+BALTIC SEA,Cod,cod.27.22-24,YES,,TAF
+BALTIC SEA,Cod,cod.27.24-32,YES,,TAF
+BALTIC SEA,Plaice,ple.27.21-23,YES,,SAO
+BALTIC SEA,Plaice,ple.27.24-32,YES,,SAO
+SOUTH WESTERN WATERS,Hake,hke.27.3a46-8abd,YES,Bay of Biscay Mixed Fisheries Annex 2020,Y
+SOUTH WESTERN WATERS,Megrim,meg.27.7b-k8abd,YES,Bay of Biscay Mixed Fisheries Annex 2020,Y
+SOUTH WESTERN WATERS,Megrim,meg.27.8c9a,YES,Iberian Waters Mixed Fisheries Annex 2020,Y
+SOUTH WESTERN WATERS,Four-spot megrim,ldb.27.8c9a,YES,Iberian Waters Mixed Fisheries Annex 2020,Y
