@@ -9,25 +9,13 @@ mkdir("report")
 
 # collate documents into a zip file
 
-# make a zip of fatage csv files
-fatage.files <- dir("output", full.names = TRUE, pattern = "*_fatage.csv")
+# make a zip of flstocks
 zip(
   file.path(
     "report",
-    "fatage-csv.zip"
+    "FLStocks.zip"
   ),
-  fatage.files,
-  extras = "-j"
-)
-
-# make a zip of the catches at age by stock and fleet
-fatage_partial.files <- dir("output", full.names = TRUE, pattern = "^fatage_partial_.*.csv$")
-zip(
-  file.path(
-    "report",
-    "fatage_partial-csv.zip"
-  ),
-  fatage_partial.files,
+  "data/stocks.RData",
   extras = "-j"
 )
 
@@ -35,16 +23,11 @@ zip(
 # zip up with disclaimer, and advice document
 files <-
   c(
-    taf.data.path("eu.2020.11.pdf"),
-    taf.data.path("disclaimer", "disclaimer.txt"),
-    "data/requested_stocks.csv",
-    "report/fatage-csv.zip",
-    "report/qc_fatage.html",
-    "report/qc_partial-fatage.html",
-    "report/fatage_partial-csv.zip",
-    "output/FLQuants_fatage.RData",
-    "output/stock_upload_summary.csv",
-    "data/gear_table.csv"
+    #taf.data.path("eu.2020.11.pdf"),
+    #taf.data.path("disclaimer", "disclaimer.txt"),
+    #"data/requested_stocks.csv",
+    "report/FLStocks.zip"
+    #"report/qc_flstocks.html"
   )
 
 
@@ -73,12 +56,11 @@ files <-
 zip(
   file.path(
     "report",
-    "ICES.2020.matrices-of-F-at-age-for-selected-stocks.zip"
+    "ICES.2021.FLStocks-and-FLFleets-for-selected-stocks.zip"
   ),
   files,
   extras = "-j"
 )
 
 # clean up
-unlink("report/fatage-csv.zip")
-unlink("report/fatage_partial-csv.zip")
+unlink("report/flstocks.zip")

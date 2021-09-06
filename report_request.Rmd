@@ -1,0 +1,33 @@
+---
+  title: TM Reg request
+  output:
+    html_document:
+      mathjax: null
+---
+<style>
+.main-container {
+    max-width: 90%
+}
+</style>
+
+# Summary of work { .tabset }
+
+## Requested stocks
+
+```{r setup, include = FALSE}
+library(knitr)
+library(pander)
+opts_chunk$set(
+  echo = FALSE
+)
+```
+
+```{r, results="asis"}
+pandoc.table(stock_summary, emphasize.strong.rows = which(stock_summary$FLStock))
+```
+
+## Overview of data provided
+
+```{r}
+plot(1, 1)
+```
