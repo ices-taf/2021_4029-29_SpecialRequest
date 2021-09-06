@@ -7,4 +7,4 @@ library(icesTAF)
 
 mkdir("output")
 
-source("output_FLStocks.R")
+#source("output_FLStocks.R")
