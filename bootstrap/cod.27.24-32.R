@@ -8,11 +8,16 @@
 #' @tafSource script
 
 library(icesTAF)
+library(ss3om)
 
-fdata <- read.taf("https://taf.ices.dk/fs/2020_cod.27.24-32_assessment/output/fatage.csv")
+download("https://taf.ices.dk/fs/2020_cod.27.24-32_assessment", destfile = "temp.zip")
+unzip("temp.zip", exdir = "temp")
+unlink("temp.zip")
 
-data <- taf2long(fdata, c("year", "age", "harvest"))
-data$stock_code <- "cod.27.24-32"
-data$assessment_year <- 2020
+stock <- readFLSss3("temp\\2020_cod.27.24-32_assessment\\model")
+name(stock) <- "cod.27.24-32"
+desc(stock) <- "SS3 fit dowloaded from TAF"
 
-write.taf(data)
+save(stock, file = "stock.RData")
+
+unlink("temp", recursive = TRUE)

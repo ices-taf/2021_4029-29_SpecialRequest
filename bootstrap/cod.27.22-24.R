@@ -8,11 +8,15 @@
 #' @tafSource script
 
 library(icesTAF)
+source(taf.boot.path("..", "utilities_bootstrap.R"))
 
-fdata <- read.taf("https://taf.ices.dk/fs/2020_cod.27.22-24_assessment/output/fatage.csv")
+download("https://taf.ices.dk/fs/2020_cod.27.22-24_assessment/output/model.rdata")
+loaded <- load("model.rdata")
+unlink("model.rdata")
 
-data <- taf2long(fdata, c("year", "age", "harvest"))
-data$stock_code <- "cod.27.22-24"
-data$assessment_year <- 2020
+fit <- get(loaded)
 
-write.taf(data)
+stock <- get_soa_flstock("cod.27.22-24", fit)
+desc(stock) <- "Fit from SAM model on TAF"
+
+save(stock, file = "stock.RData")

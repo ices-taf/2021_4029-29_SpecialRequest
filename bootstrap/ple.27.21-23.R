@@ -10,6 +10,7 @@
 library(icesTAF)
 source(taf.boot.path("..", "utilities_bootstrap.R"))
 
-data <- get_soa_flstock("ple.27.21-23_WGBFAS_2020_v5")
-data$stock_code <- "ple.27.21-23"
-write.taf(data)
+stock <- get_soa_flstock("ple.27.21-23_WGBFAS_2020_v5")
+name(stock) <- "ple.27.21-23"
+
+save(stock, file = "stock.RData")

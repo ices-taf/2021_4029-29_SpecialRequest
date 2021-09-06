@@ -8,8 +8,11 @@
 #' @tafSource script
 
 library(icesTAF)
+library(dplyr)
+
 source(taf.boot.path("..", "utilities_bootstrap.R"))
 
-data <- get_soa_flstock("cod6a_WGCSE2020_final")
-data$stock_code <- "cod.27.6a"
-write.taf(data)
+stock <- get_soa_flstock("cod6a_WGCSE2020_final")
+name(stock) <- "cod.27.6a"
+
+save(stock, file = "stock.RData")
