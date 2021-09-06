@@ -9,35 +9,27 @@ library(httr)
 
 mkdir("data")
 
-stocks <-
-  c(
-    "cod.27.47d20", "had.27.46a20", "whg.27.47d", "ple.27.420",
-    "ple.27.7d", "ple.27.7d", "pok.27.3a46", "cod.27.6a",
-    "cod.27.7e-k", "had.27.6b", "had.27.7a", "had.27.7b-k",
-    "whg.27.7b-ce-k", "ple.27.7a", "cod.27.22-24", "cod.27.24-32",
-    "ple.27.21-23", "ple.27.24-32", "hke.27.3a46-8abd",
-    "meg.27.7b-k8abd", "meg.27.8c9a", "ldb.27.8c9a"
-  )
+stock_summary <- read.taf("data/stock_summary.csv")
 
-stocks <-
-  c(
-    "cod.27.6a", "ple.27.21-23", "ple.27.24-32"
-  )
+dirs <- list.dirs(taf.data.path(), full.names = FALSE)
+dirs <- dirs[dirs %in% stock_summary$Stock]
 
+stocks <- list()
+for(idir in dirs) {
+  rdata <- taf.data.path(idir, "stock.RData")
+  if (file.exists(rdata)) {
+    load(rdata)
+    stocks <- c(stocks, stock)
+  }
+}
+names(stocks) <- sapply(stocks, name)
 
-dirs <- dir(taf.data.path())
-dirs <- dirs[dirs %in% stocks]
+# mixfish stocks
+load(taf.data.path("wgmixfish_stocks", "mixed_fish.RData"))
+stocks <- c(stocks, mixed_fish)
 
-data <-
-  lapply(dirs, function(x) {
-    fname <- taf.data.path(x, "data.csv")
-    if (file.exists(fname)) {
-      read.taf(fname)
-    } else {
-      NULL
-    }
-  })
-data <- data[!sapply(data, is.null)]
-all_stocks <- do.call(rbind, data)
+stock_summary$FLStock <- stock_summary$Stock %in% names(stocks)
 
-write.taf(all_stocks, dir = "data")
+write.taf(stock_summary, dir = "data")
+
+save(stocks, file = "data/stocks.RData")

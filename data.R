@@ -5,4 +5,5 @@
 
 mkdir("data")
 
+source("data_request.R")
 source("data_stocks.R")
