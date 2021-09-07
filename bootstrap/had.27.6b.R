@@ -8,6 +8,7 @@
 #' @tafSource script
 
 library(icesTAF)
+library(FLCore)
 taf.library(icesSharePoint)
 
 spgetfile(
@@ -20,24 +21,27 @@ spgetfile(
 unzip("data_output2019_Had6b.zip", exdir = "temp")
 unlink("data_output2019_Had6b.zip")
 
-fname <- "temp/output2019/harvest.txt"
-readLines(fname)
+# fill up the FLStock object
+stock <- readFLStock("temp/data2019/Had6b.IDX")
+name(stock) <- "had.27.6b"
 
-# read lowestoft file
-fdata <- read.table(fname, skip = 3, header = TRUE, check.names = FALSE)
-years <- fdata$year
-ages <- as.numeric(colnames(fdata)[-1])
-
-data <-
-  data.frame(
-    year = rep(years, length(ages)),
-    age = rep(ages, each = length(years)),
-    harvest = unname(unlist(fdata[, -1]))
+# read results tables
+harvest(stock)[] <-
+  t(
+    read.table(
+      "temp/output2019/harvest.txt",
+      skip = 3, header = TRUE, check.names = FALSE
+    )[, -1]
+  )
+stock.n(stock)[] <-
+  t(
+    read.table(
+      "temp/output2019/catch.n.txt",
+      skip = 3, header = TRUE, check.names = FALSE
+    )[, -1]
   )
 
-data$stock_code <- "had.27.6b"
-data$assessment_year <- 2020
-write.taf(data)
+save(stock, file = "stock.RData")
 
 # clean up
 unlink("temp", recursive = TRUE)
