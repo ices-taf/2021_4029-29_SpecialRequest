@@ -15,21 +15,6 @@ taf.library(icesSharePoint)
 # get stocks list
 request <- read.taf(taf.data.path("request.csv"))
 
-# "cod.27.47d20"     "had.27.46a20"     "whg.27.47d"       "ple.27.420"
-# "ple.27.7d"        "ple.27.7d"        "pok.27.3a46"      "cod.27.7e-k"
-# "had.27.7a"        "had.27.7b-k"      "whg.27.7b-ce-k"   "hke.27.3a46-8abd"
-# "meg.27.7b-k8abd"  "meg.27.8c9a"      "ldb.27.8c9a"
-
-# get zip file
-if (FALSE) {
-  spgetfile(
-    "2019 Meeting Documents/06. Data/ple.27.7h-k.zip",
-    "/ExpertGroups/WGCSE",
-    "https://community.ices.dk",
-    destdir = "."
-  )
-}
-
 zfname <- "eu_data_request.zip"
 cp(
   taf.boot.path("initial", "data", zfname),
