@@ -13,7 +13,7 @@ taf.bootstrap(data = FALSE)
 
 taf.roxygenise(
   files = c(
-    #"advice_pdf.R",
+    "advice_pdf.R",
     "request.R",
     "disclaimer.R",
     "wgmixfish_stocks.R", #"wgmixfish_fleets.R",

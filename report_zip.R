@@ -12,7 +12,7 @@ mkdir("report")
 # zip up with disclaimer, and advice document
 files <-
   c(
-    #taf.data.path("eu.2021.09.pdf"),
+    taf.data.path("eu.2021.09.pdf"),
     taf.data.path("disclaimer", "disclaimer.txt"),
     "data/stock_summary.csv",
     "data/stocks.RData",
