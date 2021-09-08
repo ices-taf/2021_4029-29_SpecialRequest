@@ -22,6 +22,7 @@ unzip("Haddock_VIIa_2020.zip", exdir = "temp")
 unlink("Haddock_VIIa_2020.zip")
 
 (load("temp/haddock/Assessment/had7aso.Rdata"))
+name(stock) <- "had.27.7a"
 
 save(stock, file = "stock.RData")
 
