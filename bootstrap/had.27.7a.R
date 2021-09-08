@@ -8,40 +8,21 @@
 #' @tafSource script
 
 library(icesTAF)
+library(FLCore)
 taf.library(icesSharePoint)
 
-warning("Had 7a needs to be extracted from the report")
+spgetfile(
+  "2020 Meeting Docs/06. Data/Haddock_VIIa_2020.zip",
+  "/ExpertGroups/WGCSE",
+  "https://community.ices.dk",
+  destdir = "."
+)
 
-if (FALSE) {
-  spgetfile(
-    "Documents/Preliminary documents/bootstrap_initial_data/had.27.7a/f-at-age.csv",
-    "/admin/Requests",
-    "https://community.ices.dk",
-    destdir = "."
-  )
+unzip("Haddock_VIIa_2020.zip", exdir = "temp")
+unlink("Haddock_VIIa_2020.zip")
 
-  # read lowestoft file
-  fdata <- read.taf("f-at-age.csv")
-  years <- fdata$year
-  ages <- as.numeric(colnames(fdata)[-1])
+(load("temp/haddock/Assessment/had7aso.Rdata"))
 
-  data <-
-    data.frame(
-      year = rep(years, length(ages)),
-      age = rep(ages, each = length(years)),
-      harvest = unname(unlist(fdata[, -1]))
-    )
-  data$stock_code <- "had.27.7a"
-  data$assessment_year <- 2020
-  write.taf(data)
+save(stock, file = "stock.RData")
 
-  cat(
-    "NOTE:
-* F taken from report, nothing on sharepoint
-",
-    file = "README.md"
-  )
-
-  # clean up
-  unlink("f-at-age.csv")
-}
+unlink("temp", recursive = TRUE)
