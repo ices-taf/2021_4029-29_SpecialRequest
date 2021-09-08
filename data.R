@@ -3,6 +3,7 @@
 ## Before:
 ## After:
 
+library(icesTAF)
 mkdir("data")
 
 source("data_request.R")

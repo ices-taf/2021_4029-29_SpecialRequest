@@ -4,6 +4,7 @@
 ## After:
 
 library(icesTAF)
+library(FLCore)
 library(dplyr)
 library(httr)
 
