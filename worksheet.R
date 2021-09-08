@@ -16,7 +16,7 @@ taf.roxygenise(
     "advice_pdf.R",
     "request.R",
     "disclaimer.R",
-    "wgmixfish_stocks.R", #"wgmixfish_fleets.R",
+    "wgmixfish_stocks.R", "wgmixfish_fleets.R",
     "cod.27.22-24.R", "cod.27.24-32.R", "cod.27.6a.R",
     "had.27.6b.R", "had.27.7a.R",
     "ple.27.21-23.R",

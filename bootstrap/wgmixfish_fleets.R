@@ -1,6 +1,6 @@
 #' Data provided by WGMIXFISH
 #'
-#' @name wgmixfish_stocks
+#' @name wgmixfish_fleets
 #' @format csv file
 #' @tafOriginator ICES, WGMIXFISH
 #' @tafYear 2021
@@ -35,14 +35,31 @@ unlink(zfname)
 fleets_ns <- fleets
 
 # Bob
-load(
+(load(
   file.path(
     "eu_data_request", "Bob_advice_data", "fleets_biols.RData"
   )
-)
+))
 
 fleets_bob <- fleets
 
+# IBW
+(load(
+  file.path(
+    "eu_data_request", "IBW_advice_data", "biols_STF20.RData"
+  )
+))
+
+fleets_ibw <- list(ldb.27.8c9a = fleets.ldb, meg.27.8c9a = fleets.meg)
+
 # save
-assign("mixed_fish", value = list_stocks)
-save(mixed_fish, file = "mixed_fish.RData")
+fleets <-
+  list(
+    NorthSea = fleets_ns,
+    BayOfBiscay = fleets_bob,
+    IberianWaters = fleets_ibw
+  )
+save(fleets, file = "fleets.RData")
+
+# clean
+unlink("eu_data_request", recursive = TRUE)
