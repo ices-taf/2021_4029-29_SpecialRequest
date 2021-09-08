@@ -6,7 +6,7 @@
 #' @name disclaimer
 #' @format txt file
 #' @tafOriginator ICES
-#' @tafYear 2020
+#' @tafYear 2021
 #' @tafAccess Public
 #' @tafSource script
 
@@ -30,13 +30,13 @@ disclaimer <- readLines(disclaimer_url)
 # specific entries
 data_specific <-
   paste(
-    "The zip file contains csv files of F-at-age by stock, along with an R object of a named list of FLQuants containing the same information.",
-    "Also included is partial F and proportion of the total catch in numbers by stock and age for various fleet components.  Three gear groupings are provided: a high level one, based the type of fishing (e.g. Otter trawl, pelagic trawl); a more detailed grouping based on metier level 4 codes; and the third more detailed still based on metier level 5 codes.  The most detailed level is provided in case the user wished to construct their own fleet grouping, and is likely to be too disaggregated to reflect the selectivities of these components accurately."
+    "The zip file contains RData files of a named list of FLStock and FLFleet objects for the requested stocks.",
+    "The Fleet objects are provided by ICES WGMIXFISH and have been created for mixed fishery assessments for the North Sea, Bay of Biscay and Iberian Waters Mixed Fishery regions."
   )
 
-recomended_citation <- "ICES. 2021. EU request on the production of matrices by year and age with F-at-age for stocks corresponding to the latest published advice for each stock. In Report of the ICES Advisory Committee, 2020. ICES Advice 2020, sr.2020.11. https://doi.org/10.17895/ices.advice.7497"
+recomended_citation <- "ICES. 2021. EU data request to support the Technical Measures Regulation Review Expert Working Group. In Report of the ICES Advisory Committee, 2021. ICES Advice 2021, sr.2021.09. https://doi.org/10.17895/ices.advice.8284"
 
-metadata <- "https://doi.org/10.17895/ices.advice.7497"
+metadata <- "https://doi.org/10.17895/ices.advice.8284"
 
 # apply to sections
 # data specific info
