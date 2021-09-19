@@ -16,8 +16,11 @@ files <-
     taf.data.path("disclaimer", "disclaimer.txt"),
     "data/stock_summary.csv",
     "data/stocks.RData",
+    "data/fleets.RData",
     #"report/qc_flstocks.html"
-    "report/request.html"
+    "report/request.html",
+    taf.boot.path("initial", "data", "eu_data_request.zip"),
+    "README.md"
   )
 
 

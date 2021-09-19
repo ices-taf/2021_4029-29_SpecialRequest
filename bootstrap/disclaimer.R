@@ -31,7 +31,8 @@ disclaimer <- readLines(disclaimer_url)
 data_specific <-
   paste(
     "The zip file contains RData files of a named list of FLStock and FLFleet objects for the requested stocks.",
-    "The Fleet objects are provided by ICES WGMIXFISH and have been created for mixed fishery assessments for the North Sea, Bay of Biscay and Iberian Waters Mixed Fishery regions."
+    "The Fleet objects are provided by ICES WGMIXFISH and have been created for mixed fishery assessments for the North Sea, Bay of Biscay and Iberian Waters Mixed Fishery regions.",
+    "Please note that the full dataset provided by WGMIXFISH is available in the file: eu_data_request.zip"
   )
 
 recomended_citation <- "ICES. 2021. EU data request to support the Technical Measures Regulation Review Expert Working Group. In Report of the ICES Advisory Committee, 2021. ICES Advice 2021, sr.2021.09. https://doi.org/10.17895/ices.advice.8284"

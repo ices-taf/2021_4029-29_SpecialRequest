@@ -70,6 +70,11 @@ get_soa_flstock <- function(run, fit = NULL) {
   name(stock) <- run
   desc(stock) <- "Fit from SAM model on SAO"
 
+  stock(stock) <- computeStock(stock)
+  catch(stock) <- computeCatch(stock)
+  landings(stock) <- computeLandings(stock)
+  discards(stock) <- computeDiscards(stock)
+
   stock
 }
 

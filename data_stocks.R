@@ -29,6 +29,29 @@ names(stocks) <- sapply(stocks, name)
 load(taf.data.path("wgmixfish_stocks", "mixed_fish.RData"))
 stocks <- c(stocks, mixed_fish)
 
+# clean all stocks
+
+stocks <- lapply(stocks, window, end = 2019)
+stocks <-
+  lapply(
+    stocks,
+    function(x) {
+      catch(x) <- computeCatch(x)
+      stock(x) <- computeStock(x)
+      landings(x) <- computeLandings(x)
+      discards(x) <- computeDiscards(x)
+      x
+    }
+  )
+
+(load(taf.data.path("ices.stks.cleaned.rdata")))
+
+stks[["cod.27.22-24"]] <- stocks[["cod.27.22-24"]]
+stks[["ple.27.24-32"]] <- stocks[["ple.27.24-32"]]
+
+stocks_taf <- stocks
+stocks <- lapply(stks, function(x) x)
+
 stock_summary$FLStock <- stock_summary$Stock %in% names(stocks)
 
 write.taf(stock_summary, dir = "data")

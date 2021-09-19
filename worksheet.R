@@ -2,7 +2,7 @@
 library(icesTAF)
 
 draft.software(
-  c("icesSAG", "icesSD", "icesSharePoint", "stockassessment"),
+  c("icesSAG", "icesSD", "icesSharePoint", "stockassessment", "FLfse"),
   file = TRUE
 )
 
@@ -23,10 +23,14 @@ taf.roxygenise(
     "ple.27.24-32.R", "ple.27.7a.R",
     #"hke.27.3a46-8abd.R",
     "Input_Mixed_fishery_21may2020.R", "meg.27.7b-k8abd.R",
-    "ldb.27.8c9a.R", "meg.27.8c9a.R"
+    "ldb.27.8c9a.R", "meg.27.8c9a.R",
+    "ices.stks.cleaned.R"
   )
 )
 
 taf.bootstrap(software = FALSE)
 
 sourceAll()
+
+# render README.md summary page
+#rmarkdown::render("README.Rmd")

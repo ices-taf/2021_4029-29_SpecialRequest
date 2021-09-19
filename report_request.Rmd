@@ -23,11 +23,6 @@ opts_chunk$set(
 ```
 
 ```{r, results="asis"}
-pandoc.table(stock_summary, emphasize.strong.rows = which(stock_summary$FLStock))
-```
-
-## Overview of data provided
-
-```{r}
-plot(1, 1)
+#pandoc.table(stock_summary, emphasize.rows = which(!stock_summary$FLStock), split.tables = Inf)
+pandoc.table(stock_summary)
 ```
